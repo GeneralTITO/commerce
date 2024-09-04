@@ -17,5 +17,5 @@ export class Produto {
   quantidadeEmEstoque: number;
 
   @OneToMany(() => ItensVenda, itensVenda => itensVenda.produto)
-  itensVendas: ItensVenda[];
+  itensVendas?: ItensVenda[];
 }
