@@ -1,6 +1,6 @@
 import {
     clientSchema, clienteCreateSchema, clientUpdateSchema, clientReturnSchema, clientReadSchema
-} from './Client.schemas';
+} from './client.schemas';
 
 import {
     funcionarioSchema, funcionarioCreateSchema, funcionarioUpdateSchema, funcionarioReturnSchema, funcionarioReadSchema

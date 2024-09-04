@@ -1,38 +1,40 @@
 import { Cliente } from "../entities";
-import { ClienteCreate, ClienteReturn } from "../interfaces";
+import { ClienteCreate, ClienteReturn, ClienteUpdate } from "../interfaces";
+import { clientReturnSchema } from "../schemas";
+import { clientRepository } from "../repositories";
 
 const create = async (payload: ClienteCreate): Promise<ClienteReturn> => {
-  const Cliente: Cliente = ClienteRepository.create(payload);
-  await ClienteRepository.save(Cliente);
-  return ClienteReturnSchema.parse(Cliente);
+  const Cliente: Cliente = clientRepository.create(payload);
+  await clientRepository.save(Cliente);
+  return clientReturnSchema.parse(Cliente);
 };
 
 const read = async (ClienteId: number): Promise<ClienteReturn> => {
-  const Cliente = await ClienteRepository.findOne({
+  const Cliente = await clientRepository.findOne({
     where: { id: ClienteId },
   });
-  return ClienteReturnSchema.parse(Cliente);
+  return clientReturnSchema.parse(Cliente);
 };
 
 const update = async (payload: ClienteUpdate, id: number): Promise<ClienteReturn> => {
-  const ClienteFound: Cliente | null = await ClienteRepository.findOne({
+  const ClienteFound: Cliente | null = await clientRepository.findOne({
     where: { id: id },
   });
 
-  const ClienteUpdated: Cliente = ClienteRepository.create({
+  const ClienteUpdated: Cliente = clientRepository.create({
     ...ClienteFound!,
     ...payload,
   });
 
-  await ClienteRepository.save(ClienteUpdated);
+  await clientRepository.save(ClienteUpdated);
 
-  const Cliente = ClienteReturnSchema.parse(ClienteUpdated);
+  const Cliente = clientReturnSchema.parse(ClienteUpdated);
 
   return Cliente;
 };
 
 const destroy = async (Cliente: Cliente): Promise<void> => {
-  await ClienteRepository.remove(Cliente);
+  await clientRepository.remove(Cliente);
 };
 
-export default { create, read, update, destroy };
+export default { create, read, update, destroy};
