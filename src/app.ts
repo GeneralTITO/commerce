@@ -2,13 +2,16 @@ import "express-async-errors";
 import express, { Application, json } from "express";
 import middlewares from "./middlewares";
 import {
-ClienteRouter
+ClienteRouter,
+FuncionarioRouter
 } from "./routers";
 
 const app: Application = express();
 app.use(json());
 
 app.use("/clientes", ClienteRouter);
+app.use("/funcionario", FuncionarioRouter);
+
 // app.use("/login", sessionRouter);
 // app.use("/categories", categoryRouter);
 // app.use("/ingredients", ingredientRouter);

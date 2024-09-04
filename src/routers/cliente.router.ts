@@ -6,11 +6,14 @@ import { clientController } from "../controllers";
 export const ClienteRouter: Router = Router();
 
 ClienteRouter.post(
-  "",
+  "/",
   middlewares.validateBody(clienteCreateSchema),
   clientController.create
 );
+ClienteRouter.get("/", clientController.readAll);
+
 ClienteRouter.get("/:id", middlewares.ClienteExists, clientController.read);
+
 
 ClienteRouter.patch(
   "/:id",

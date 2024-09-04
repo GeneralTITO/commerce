@@ -2,10 +2,10 @@ import { z } from "zod";
 import { vendaSchema } from "./venda.schemas";
 
 const funcionarioSchema = z.object({
-    id: z.number().positive().nullable(),
-    nome: z.string().max(150).nullable(),
-    cargo: z.string().max(100).nullable(),
-    telefone: z.string().max(50).nullable(),
+    id: z.number().positive(),
+    nome: z.string().max(150),
+    cargo: z.string().max(100),
+    telefone: z.string().max(50),
 });
 
 const funcionarioCreateSchema = funcionarioSchema.omit({

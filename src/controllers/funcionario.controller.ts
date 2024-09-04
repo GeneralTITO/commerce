@@ -1,31 +1,31 @@
 import { Request, Response } from "express";
-import { clientServices } from '../services'
-import { ClienteReturn } from "../interfaces";
+import { funcionarioServices } from '../services'
+import {FuncionarioReturn, FuncionarioRead } from "../interfaces";
 
 const create = async (req: Request, res: Response): Promise<Response> => {
-  const user: ClienteReturn = await clientServices.create(req.body);
+  const user: FuncionarioReturn = await funcionarioServices.create(req.body);
   return res.status(201).json(user);
 };
 const read = async (req: Request, res: Response): Promise<Response> => {
   const userId: number = Number(req.params.id);
-  const user = await clientServices.read(userId);
+  const user = await funcionarioServices.read(userId);
   return res.status(200).json(user);
 };
 
 const update = async (req: Request, res: Response): Promise<Response> => {
   const id: number = Number(req.params.id);
-  const user: ClienteReturn = await clientServices.update(req.body, id);
+  const user: FuncionarioReturn = await funcionarioServices.update(req.body, id);
   return res.status(200).json(user);
 };
 
 const destroy = async (req: Request, res: Response): Promise<Response> => {
-  await clientServices.destroy(res.locals.foundEntity);
+  await funcionarioServices.destroy(res.locals.foundEntity);
   return res.status(204).json();
 };
 
 
 const readAll = async (req: Request, res: Response): Promise<Response> => {
-  const clientes = await clientServices.readAll();
+  const clientes: FuncionarioRead = await funcionarioServices.readAll();
   return res.status(200).json(clientes);
 };
 

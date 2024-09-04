@@ -1,6 +1,6 @@
 import { Cliente } from "../entities";
-import { ClienteCreate, ClienteReturn, ClienteUpdate } from "../interfaces";
-import { clientReturnSchema } from "../schemas";
+import { ClienteCreate, ClienteRead, ClienteReturn, ClienteUpdate } from "../interfaces";
+import { clientReadSchema, clientReturnSchema } from "../schemas";
 import { clientRepository } from "../repositories";
 
 const create = async (payload: ClienteCreate): Promise<ClienteReturn> => {
@@ -14,6 +14,13 @@ const read = async (ClienteId: number): Promise<ClienteReturn> => {
     where: { id: ClienteId },
   });
   return clientReturnSchema.parse(Cliente);
+};
+
+const readAll = async (): Promise<ClienteRead> => {
+  const Cliente = await clientRepository.find({
+    order:{id: "asc"}
+  });
+  return clientReadSchema.parse(Cliente);
 };
 
 const update = async (payload: ClienteUpdate, id: number): Promise<ClienteReturn> => {
@@ -37,4 +44,4 @@ const destroy = async (Cliente: Cliente): Promise<void> => {
   await clientRepository.remove(Cliente);
 };
 
-export default { create, read, update, destroy};
+export default { create, read, update, destroy, readAll};
