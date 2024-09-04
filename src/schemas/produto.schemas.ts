@@ -12,9 +12,10 @@ const produtoCreateSchema = produtoSchema.omit({
     id: true,
 });
 
+
 const produtoUpdateSchema = produtoCreateSchema.partial();
 
+const produtoReturnSchema  = produtoSchema.omit({itensVenda:true})
+const produtoReadSchema = produtoReturnSchema.array();
 
-const produtoReadSchema = produtoSchema.array();
-
-export { produtoSchema, produtoCreateSchema, produtoUpdateSchema, produtoReadSchema };
+export { produtoSchema, produtoCreateSchema, produtoUpdateSchema, produtoReadSchema, produtoReturnSchema };

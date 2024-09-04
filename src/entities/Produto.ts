@@ -10,7 +10,7 @@ export class Produto {
   @Column()
   nome: string;
 
-  @Column('decimal')
+  @Column('decimal', { precision: 10, scale: 2 })
   preco: number;
 
   @Column()

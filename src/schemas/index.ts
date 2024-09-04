@@ -11,7 +11,7 @@ import {
 } from './itensvenda.schema';
 
 import {
-    produtoSchema, produtoCreateSchema, produtoUpdateSchema, produtoReadSchema
+    produtoSchema, produtoCreateSchema, produtoUpdateSchema, produtoReadSchema, produtoReturnSchema
 } from './produto.schemas';
 
 import {
@@ -23,5 +23,5 @@ export {
     funcionarioSchema, funcionarioCreateSchema, funcionarioUpdateSchema, funcionarioReturnSchema, funcionarioReadSchema,
     itensVendaSchema, itensVendaCreateSchema, itensVendaUpdateSchema, itensVendaReadSchema,
     produtoSchema, produtoCreateSchema, produtoUpdateSchema, produtoReadSchema,
-    vendaSchema, vendaCreateSchema, vendaUpdateSchema,  vendaReadSchema
+    vendaSchema, vendaCreateSchema, vendaUpdateSchema,  vendaReadSchema, produtoReturnSchema
 };
