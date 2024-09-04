@@ -9,24 +9,24 @@ import {
 } from './funcionario.interface';
 
 import {
-    ItensVendaCreate, ItensVendaRead, ItensVendaReturn, ItensVendaUpdate,
+    ItensVendaCreate, ItensVendaRead,  ItensVendaUpdate,
     ItensVendaRepo
 } from './itensvenda.interface';
 
 import {
-    ProdutoCreate, ProdutoRead, ProdutoReturn, ProdutoUpdate,
+    ProdutoCreate, ProdutoRead, ProdutoUpdate,
     ProdutoRepo
 } from './produto.interfaces';
 
 import {
-    VendaCreate, VendaRead, VendaReturn, VendaUpdate,
+    VendaCreate, VendaRead, VendaUpdate,
     VendaRepo
 } from './venda.interfaces';
 
 export {
     ClienteCreate, ClienteRead, ClienteReturn, ClienteUpdate, ClienteRepo,
     FuncionarioCreate, FuncionarioRead, FuncionarioReturn, FuncionarioUpdate, FuncionarioRepo,
-    ItensVendaCreate, ItensVendaRead, ItensVendaReturn, ItensVendaUpdate, ItensVendaRepo,
-    ProdutoCreate, ProdutoRead, ProdutoReturn, ProdutoUpdate, ProdutoRepo,
-    VendaCreate, VendaRead, VendaReturn, VendaUpdate, VendaRepo
+    ItensVendaCreate, ItensVendaRead,  ItensVendaUpdate, ItensVendaRepo,
+    ProdutoCreate, ProdutoRead, ProdutoUpdate, ProdutoRepo,
+    VendaCreate, VendaRead, VendaUpdate, VendaRepo
 };

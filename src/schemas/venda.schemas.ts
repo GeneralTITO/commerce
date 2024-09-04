@@ -1,12 +1,13 @@
 import { z } from "zod";
+import { clientReturnSchema } from "./Client.schemas";
+import { funcionarioReturnSchema } from "./funcionario.schemas";
+import { itensVendaSchema } from "./itensvenda.schema";
 
 const vendaSchema = z.object({
     id: z.number().positive().nullable(),
     data: z.date().nullable(),
     status: z.enum(['Em Curso', 'Concluída']).default('Em Curso'),
-    // cliente: z.instanceof(Cliente).optional(), // Referência omitida, seria usada em outro contexto
-    // funcionario: z.instanceof(Funcionario).optional(), // Referência omitida, seria usada em outro contexto
-    // itensVendas: z.array(ItensVenda).optional(), // Referência omitida, seria usada em outro contexto
+    cliente: clientReturnSchema,
 });
 
 const vendaCreateSchema = vendaSchema.omit({
@@ -15,8 +16,6 @@ const vendaCreateSchema = vendaSchema.omit({
 
 const vendaUpdateSchema = vendaCreateSchema.partial();
 
-const vendaReturnSchema = vendaSchema;
+const vendaReadSchema = vendaSchema.array();
 
-const vendaReadSchema = vendaReturnSchema.array();
-
-export { vendaSchema, vendaCreateSchema, vendaUpdateSchema, vendaReturnSchema, vendaReadSchema };
+export { vendaSchema, vendaCreateSchema, vendaUpdateSchema, vendaReadSchema };
