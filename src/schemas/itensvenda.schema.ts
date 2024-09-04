@@ -1,11 +1,14 @@
 import { z } from "zod";
 
+import { vendaSchema } from "./venda.schemas";
+import { produtoSchema } from "./produto.schemas";
+
 const itensVendaSchema = z.object({
     id: z.number().positive().nullable(),
     quantidade: z.number().positive().nullable(),
     precoTotal: z.number().positive().nullable(),
-    // venda: z.instanceof(Venda).optional(), // Referência omitida, seria usada em outro contexto
-    // produto: z.instanceof(Produto).optional(), // Referência omitida, seria usada em outro contexto
+    venda: vendaSchema,
+    produto: produtoSchema,
 });
 
 const itensVendaCreateSchema = itensVendaSchema.omit({
@@ -14,8 +17,7 @@ const itensVendaCreateSchema = itensVendaSchema.omit({
 
 const itensVendaUpdateSchema = itensVendaCreateSchema.partial();
 
-const itensVendaReturnSchema = itensVendaSchema;
 
-const itensVendaReadSchema = itensVendaReturnSchema.array();
+const itensVendaReadSchema = itensVendaSchema.array();
 
-export { itensVendaSchema, itensVendaCreateSchema, itensVendaUpdateSchema, itensVendaReturnSchema, itensVendaReadSchema };
+export { itensVendaSchema, itensVendaCreateSchema, itensVendaUpdateSchema, itensVendaReadSchema };

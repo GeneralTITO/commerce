@@ -7,21 +7,21 @@ import {
 } from './funcionario.schemas';
 
 import {
-    itensVendaSchema, itensVendaCreateSchema, itensVendaUpdateSchema, itensVendaReturnSchema, itensVendaReadSchema
+    itensVendaSchema, itensVendaCreateSchema, itensVendaUpdateSchema, itensVendaReadSchema
 } from './itensvenda.schema';
 
 import {
-    produtoSchema, produtoCreateSchema, produtoUpdateSchema, produtoReturnSchema, produtoReadSchema
+    produtoSchema, produtoCreateSchema, produtoUpdateSchema, produtoReadSchema
 } from './produto.schemas';
 
 import {
-    vendaSchema, vendaCreateSchema, vendaUpdateSchema, vendaReturnSchema, vendaReadSchema
+    vendaSchema, vendaCreateSchema, vendaUpdateSchema,  vendaReadSchema
 } from './venda.schemas';
 
 export {
     clientReturnSchema, clientSchema, clienteCreateSchema, clientUpdateSchema, clientReadSchema,
     funcionarioSchema, funcionarioCreateSchema, funcionarioUpdateSchema, funcionarioReturnSchema, funcionarioReadSchema,
-    itensVendaSchema, itensVendaCreateSchema, itensVendaUpdateSchema, itensVendaReturnSchema, itensVendaReadSchema,
-    produtoSchema, produtoCreateSchema, produtoUpdateSchema, produtoReturnSchema, produtoReadSchema,
-    vendaSchema, vendaCreateSchema, vendaUpdateSchema, vendaReturnSchema, vendaReadSchema
+    itensVendaSchema, itensVendaCreateSchema, itensVendaUpdateSchema, itensVendaReadSchema,
+    produtoSchema, produtoCreateSchema, produtoUpdateSchema, produtoReadSchema,
+    vendaSchema, vendaCreateSchema, vendaUpdateSchema,  vendaReadSchema
 };

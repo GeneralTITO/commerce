@@ -6,18 +6,15 @@ const funcionarioSchema = z.object({
     nome: z.string().max(150).nullable(),
     cargo: z.string().max(100).nullable(),
     telefone: z.string().max(50).nullable(),
-    vendas: vendaSchema
 });
 
 const funcionarioCreateSchema = funcionarioSchema.omit({
     id: true,
-    vendas:true
 });
 
 const funcionarioUpdateSchema = funcionarioCreateSchema.partial();
 
 const funcionarioReturnSchema = funcionarioSchema.omit({
-    vendas:true
 });
 
 const funcionarioReadSchema = funcionarioReturnSchema.array();
