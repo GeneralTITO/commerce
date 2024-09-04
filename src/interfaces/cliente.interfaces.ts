@@ -9,7 +9,10 @@ type ClienteRead = z.infer<typeof clientReadSchema>
 type ClienteReturn = z.infer<typeof clientReturnSchema>
 type ClienteUpdate = DeepPartial<Cliente>
 
-type UserRepo = Repository<Cliente>
+type ClienteRepo = Repository<Cliente>
 
 
-export {ClienteCreate,ClienteRead,ClienteReturn,ClienteUpdate,UserRepo}
+export {
+    ClienteCreate, ClienteRead, ClienteReturn, ClienteUpdate,
+    ClienteRepo
+}
