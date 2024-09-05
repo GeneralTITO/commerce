@@ -396,3 +396,4 @@ Esta API é projetada para gerenciar um sistema de vendas, incluindo operações
     ```
 
 ---
+.
