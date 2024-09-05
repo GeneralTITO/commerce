@@ -13,6 +13,7 @@ const read = async (ProdutoId: number): Promise<ProdutoReturn> => {
     const Produto = await produtoRepository.findOne({
         where: { id: ProdutoId },
     });
+    console.log(Produto)
     if (Produto) {
         Produto.preco = parseFloat(Produto.preco as any);
     }

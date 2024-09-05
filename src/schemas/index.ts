@@ -15,7 +15,7 @@ import {
 } from './produto.schemas';
 
 import {
-    vendaSchema, vendaCreateSchema, vendaUpdateSchema, vendaReadSchema, vendaReuturnSchema
+    vendaSchema, vendaCreateSchema, vendaUpdateSchema, vendaReadSchema, vendaReuturnSchema,vendaReturnItensSchema
 } from './venda.schemas';
 
 export {
@@ -23,5 +23,5 @@ export {
     funcionarioSchema, funcionarioCreateSchema, funcionarioUpdateSchema, funcionarioReturnSchema, funcionarioReadSchema,
     itensVendaSchema, itensVendaCreateSchema, itensVendaUpdateSchema, itensVendaReadSchema,
     produtoSchema, produtoCreateSchema, produtoUpdateSchema, produtoReadSchema,
-    vendaSchema, vendaCreateSchema, vendaUpdateSchema, vendaReadSchema, produtoReturnSchema, vendaReuturnSchema, itensVendaReturnSchema
+    vendaSchema, vendaCreateSchema, vendaUpdateSchema, vendaReadSchema, produtoReturnSchema, vendaReuturnSchema, itensVendaReturnSchema,vendaReturnItensSchema
 };

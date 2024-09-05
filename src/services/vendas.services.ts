@@ -1,7 +1,7 @@
-import { Venda } from "../entities";
+import { ItensVenda, Venda } from "../entities";
 import { VendaCreate, VendaRead, VendaReturn, VendaUpdate } from "../interfaces";
-import { vendaReadSchema, vendaReuturnSchema } from "../schemas";
-import { clientRepository, vendaRepository } from "../repositories";
+import { vendaReadSchema, vendaReturnItensSchema, vendaReuturnSchema } from "../schemas";
+import { clientRepository, itensvendaRepository, vendaRepository } from "../repositories";
 import { AppError } from "../errors";
 
 const create = async (payload: VendaCreate): Promise<VendaReturn> => {
@@ -20,22 +20,28 @@ const create = async (payload: VendaCreate): Promise<VendaReturn> => {
     return vendaReuturnSchema.parse(venda);
 };
 
-const read = async (vendaId: number): Promise<VendaReturn> => {
+const read = async (vendaId: number): Promise<any> => {
     const venda = await vendaRepository.findOne({
         where: { id: vendaId }, relations: ['cliente'],
     });
-    if(venda){
-        const dataobj =new Date (venda?.data)
-        venda.data = dataobj
+    if (!venda) {
+        throw new AppError('venda not found!')
     }
-    return vendaReuturnSchema.parse(venda);
+    
+    const itensDaVenda = await itensvendaRepository.find({ where: { venda: venda } })
+    const dataobj = new Date(venda?.data)
+    venda.data = dataobj
+    return {
+        ...venda,
+        itensDaVenda, 
+    };
 };
 
 const readAll = async (): Promise<any> => {
     const vendas = await vendaRepository.find({
         order: { id: "ASC" }, relations: ['cliente']
     });
-    return vendaReadSchema.parse(vendas) ;
+    return vendaReadSchema.parse(vendas);
 };
 
 const update = async (payload: VendaUpdate, id: number): Promise<VendaReturn> => {

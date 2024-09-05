@@ -1,5 +1,6 @@
 import { z } from "zod";
 import { clientSchema } from "./client.schemas";
+import { itensVendaReadSchema, itensVendaReturnSchema, itensVendaSchema } from "./itensvenda.schema";
 
 
 const clientIdSchema = clientSchema.pick({ id: true })
@@ -21,7 +22,9 @@ const vendaUpdateSchema = vendaCreateSchema.partial();
 const vendaReuturnSchema = vendaSchema.extend({ cliente: clientIdName })
 const vendaReuturndataStringSchema = vendaSchema.extend({ cliente: clientIdName, data: z.string() })
 
+const vendaReturnItensSchema = vendaReuturnSchema.extend({itensvendas: itensVendaReadSchema})
+
 
 const vendaReadSchema = vendaReuturndataStringSchema.array();
 
-export { vendaSchema, vendaCreateSchema, vendaUpdateSchema, vendaReadSchema, vendaReuturnSchema };
+export { vendaSchema, vendaCreateSchema, vendaUpdateSchema, vendaReadSchema, vendaReuturnSchema, vendaReturnItensSchema };
