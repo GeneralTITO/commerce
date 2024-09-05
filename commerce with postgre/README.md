@@ -250,32 +250,24 @@ Esta API é projetada para gerenciar um sistema de vendas, incluindo operações
     }
     ```
 
-- **Atualizar uma venda**
+- **Concluir uma venda uma venda**
   - `PATCH /vendas/{id}`
-  - **Descrição**: Atualiza os detalhes de uma venda específica.
+  - **Descrição**: Conclui uma venda específica.
   - **Parâmetros de Path**:
     - `id`: ID da venda.
-  - **Corpo da Requisição**:
-    ```json
-    {
-      "data": "2024-09-02"
-    }
-    ```
+
   - **Exemplo de Resposta**:
     ```json
     {
-      "id": 1,
-      "data": "2024-09-02",
-      "cliente": {
         "id": 1,
-        "nome": "Tito"
-      }
+        "data": "1111-11-11",
+        "status": "Concluída"
     }
     ```
 
 - **Excluir uma venda**
   - `DELETE /vendas/{id}`
-  - **Descrição**: Remove uma venda específica.
+  - **Descrição**: Remove uma venda específica, e devolve os itens ao estoque. Vendas concluidas não podem ser excluidas.
   - **Parâmetros de Path**:
     - `id`: ID da venda.
   - **Exemplo de Resposta**:
@@ -329,7 +321,7 @@ Esta API é projetada para gerenciar um sistema de vendas, incluindo operações
 
 - **Criar um item de venda**
   - `POST /itensvenda`
-  - **Descrição**: Cria um novo item de venda.
+  - **Descrição**: Cria um novo item em uma venda.
   - **Corpo da Requisição**:
     ```json
     {
@@ -357,35 +349,10 @@ Esta API é projetada para gerenciar um sistema de vendas, incluindo operações
     }
     ```
 
-- **Atualizar um item de venda**
-  - `PATCH /itensvenda/{id}`
-  - **Descrição**: Atualiza os detalhes de um item de venda específico.
-  - **Parâmetros de Path**:
-    - `id`: ID do item de venda.
-  - **Corpo da Requisição**:
-    ```json
-    {
-      "quantidade": 4
-    }
-    ```
-  - **Exemplo de Resposta**:
-    ```json
-    {
-      "id": 2,
-      "quantidade": 4,
-      "produto": {
-        "id": 2,
-        "nome": "Ventilador"
-      },
-      "venda": {
-        "id": 1
-      }
-    }
-    ```
 
 - **Excluir um item de venda**
   - `DELETE /itensvenda/{id}`
-  - **Descrição**: Remove um item de venda específico.
+  - **Descrição**: Remove um item de venda específico e retorna ao estoque. Itens de vendas concluidas não podem ser excluidos.
   - **Parâmetros de Path**:
     - `id`: ID do item de venda.
   - **Exemplo de Resposta**:
