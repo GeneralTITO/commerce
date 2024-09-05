@@ -9,7 +9,7 @@ import {
 } from './funcionario.interface';
 
 import {
-    ItensVendaCreate, ItensVendaRead,  ItensVendaUpdate,
+    ItensVendaCreate, ItensVendaRead, ItensVendaUpdate,
     ItensVendaRepo
 } from './itensvenda.interface';
 
@@ -20,13 +20,13 @@ import {
 
 import {
     VendaCreate, VendaRead, VendaUpdate,
-    VendaRepo
+    VendaRepo, VendaReturn
 } from './venda.interfaces';
 
 export {
     ClienteCreate, ClienteRead, ClienteReturn, ClienteUpdate, ClienteRepo,
     FuncionarioCreate, FuncionarioRead, FuncionarioReturn, FuncionarioUpdate, FuncionarioRepo,
-    ItensVendaCreate, ItensVendaRead,  ItensVendaUpdate, ItensVendaRepo,
+    ItensVendaCreate, ItensVendaRead, ItensVendaUpdate, ItensVendaRepo,
     ProdutoCreate, ProdutoRead, ProdutoUpdate, ProdutoRepo,
-    VendaCreate, VendaRead, VendaUpdate, VendaRepo,ProdutoReturn
+    VendaCreate, VendaRead, VendaUpdate, VendaRepo, ProdutoReturn, VendaReturn
 };

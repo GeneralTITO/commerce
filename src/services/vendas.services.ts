@@ -1,47 +1,46 @@
-import { Cliente } from "../entities";
-import { ClienteCreate, ClienteRead, ClienteReturn, ClienteUpdate } from "../interfaces";
-import { clientReadSchema, clientReturnSchema } from "../schemas";
-import { clientRepository } from "../repositories";
+import { Venda } from "../entities";
+import { VendaCreate, VendaRead, VendaReturn, VendaUpdate } from "../interfaces";
+import { vendaReadSchema, vendaReuturnSchema } from "../schemas";
+import { vendaRepository } from "../repositories";
 
-const create = async (payload: ClienteCreate): Promise<ClienteReturn> => {
-  const Cliente: Cliente = clientRepository.create(payload);
-  await clientRepository.save(Cliente);
-  return clientReturnSchema.parse(Cliente);
+const create = async (payload: VendaCreate): Promise<VendaReturn> => {
+  const venda: Venda = vendaRepository.create(payload);
+  await vendaRepository.save(venda);
+  return vendaReuturnSchema.parse(venda);
 };
 
-const read = async (ClienteId: number): Promise<ClienteReturn> => {
-  const Cliente = await clientRepository.findOne({
-    where: { id: ClienteId },
+const read = async (vendaId: number): Promise<VendaReturn> => {
+  const venda = await vendaRepository.findOne({
+    where: { id: vendaId },
   });
-  return clientReturnSchema.parse(Cliente);
+  return vendaReuturnSchema.parse(venda);
 };
 
-const readAll = async (): Promise<ClienteRead> => {
-  const Cliente = await clientRepository.find({
-    order:{id: "asc"}
+const readAll = async (): Promise<VendaRead> => {
+  const vendas = await vendaRepository.find({
+    order: { id: "ASC" }
   });
-  return clientReadSchema.parse(Cliente);
+  return vendaReadSchema.parse(vendas);
 };
 
-const update = async (payload: ClienteUpdate, id: number): Promise<ClienteReturn> => {
-  const ClienteFound: Cliente | null = await clientRepository.findOne({
+const update = async (payload: VendaUpdate, id: number): Promise<VendaReturn> => {
+  const vendaFound: Venda | null = await vendaRepository.findOne({
     where: { id: id },
   });
-
-  const ClienteUpdated: Cliente = clientRepository.create({
-    ...ClienteFound!,
+  const vendaUpdated: Venda = vendaRepository.create({
+    ...vendaFound,
     ...payload,
   });
 
-  await clientRepository.save(ClienteUpdated);
+  await vendaRepository.save(vendaUpdated);
 
-  const Cliente = clientReturnSchema.parse(ClienteUpdated);
+  const venda = vendaReuturnSchema.parse(vendaUpdated);
 
-  return Cliente;
+  return venda;
 };
 
-const destroy = async (Cliente: Cliente): Promise<void> => {
-  await clientRepository.remove(Cliente);
+const destroy = async (venda: Venda): Promise<void> => {
+  await vendaRepository.remove(venda);
 };
 
-export default { create, read, update, destroy, readAll};
+export default { create, read, update, destroy, readAll };
