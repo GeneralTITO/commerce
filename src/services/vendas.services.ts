@@ -29,11 +29,18 @@ const read = async (vendaId: number): Promise<any> => {
     }
     
     const itensDaVenda = await itensvendaRepository.find({ where: { venda: venda } })
+    const total = itensDaVenda.reduce((acc, item) => {
+        const precoTotal = typeof item.precoTotal === 'string' 
+            ? parseFloat(item.precoTotal) 
+            : item.precoTotal;
+        return acc + (precoTotal || 0);
+    }, 0);
     const dataobj = new Date(venda?.data)
     venda.data = dataobj
     return {
         ...venda,
-        itensDaVenda, 
+        itensDaVenda,
+        total
     };
 };
 

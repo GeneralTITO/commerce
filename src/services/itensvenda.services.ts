@@ -1,6 +1,6 @@
 import { ItensVenda } from "../entities";
-import { ItensVendaCreate, ItensVendaRead, ItensVendaReturn, ItensVendaUpdate } from "../interfaces";
-import { itensVendaReadSchema, itensVendaReturnSchema } from "../schemas";
+import { ItensVendaCreate, ItensVendaReturn, ItensVendaUpdate } from "../interfaces";
+import { itensVendaReturnSchema } from "../schemas";
 import { itensvendaRepository, produtoRepository, vendaRepository } from "../repositories";
 import { AppError } from "../errors";
 
