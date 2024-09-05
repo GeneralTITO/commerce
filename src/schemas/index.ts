@@ -7,7 +7,7 @@ import {
 } from './funcionario.schemas';
 
 import {
-    itensVendaSchema, itensVendaCreateSchema, itensVendaUpdateSchema, itensVendaReadSchema
+    itensVendaSchema, itensVendaCreateSchema, itensVendaUpdateSchema, itensVendaReadSchema, itensVendaReturnSchema
 } from './itensvenda.schema';
 
 import {
@@ -23,5 +23,5 @@ export {
     funcionarioSchema, funcionarioCreateSchema, funcionarioUpdateSchema, funcionarioReturnSchema, funcionarioReadSchema,
     itensVendaSchema, itensVendaCreateSchema, itensVendaUpdateSchema, itensVendaReadSchema,
     produtoSchema, produtoCreateSchema, produtoUpdateSchema, produtoReadSchema,
-    vendaSchema, vendaCreateSchema, vendaUpdateSchema, vendaReadSchema, produtoReturnSchema, vendaReuturnSchema
+    vendaSchema, vendaCreateSchema, vendaUpdateSchema, vendaReadSchema, produtoReturnSchema, vendaReuturnSchema, itensVendaReturnSchema
 };

@@ -1,30 +1,54 @@
 import { ItensVenda } from "../entities";
 import { ItensVendaCreate, ItensVendaRead, ItensVendaReturn, ItensVendaUpdate } from "../interfaces";
 import { itensVendaReadSchema, itensVendaReturnSchema } from "../schemas";
-import { itensVendaRepository } from "../repositories";
+import { itensvendaRepository, produtoRepository, vendaRepository } from "../repositories";
+import { AppError } from "../errors";
 
 const create = async (payload: ItensVendaCreate): Promise<ItensVendaReturn> => {
-  const itensVenda: ItensVenda = itensVendaRepository.create(payload);
-  await itensVendaRepository.save(itensVenda);
-  return itensVendaReturnSchema.parse(itensVenda);
-};
+    const produtoFound = await produtoRepository.findOne({
+      where: { id: payload.produto.id },  
+    });
+  
+    if (!produtoFound) {
+      throw new AppError('Produto not found', 400);
+    }
+
+    const vendaFound = await vendaRepository.findOne({
+      where: { id: payload.venda.id }, 
+    });
+  
+    if (!vendaFound) {
+        throw new AppError('Venda not found', 400);
+      }
+  
+    const itensVenda = itensvendaRepository.create({
+      ...payload,
+      produto:produtoFound,
+      venda:vendaFound,    
+    });
+  
+
+    await itensvendaRepository.save(itensVenda);
+  
+    return itensVendaReturnSchema.parse(itensVenda);
+  };
 
 const read = async (itensVendaId: number): Promise<ItensVendaReturn> => {
-  const itensVenda = await itensVendaRepository.findOne({
+  const itensVenda = await itensvendaRepository.findOne({
     where: { id: itensVendaId },
   });
   return itensVendaReturnSchema.parse(itensVenda);
 };
 
 const readAll = async (): Promise<ItensVendaRead> => {
-  const itensVenda = await itensVendaRepository.find({
+  const itensVenda = await itensvendaRepository.find({
     order: { id: "ASC" }
   });
   return itensVendaReadSchema.parse(itensVenda);
 };
 
 const update = async (payload: ItensVendaUpdate, id: number): Promise<ItensVendaReturn> => {
-  const itensVendaFound: ItensVenda | null = await itensVendaRepository.findOne({
+  const itensVendaFound: ItensVenda | null = await itensvendaRepository.findOne({
     where: { id: id },
   });
 
@@ -32,12 +56,12 @@ const update = async (payload: ItensVendaUpdate, id: number): Promise<ItensVenda
     throw new Error("Item da venda não encontrado");
   }
 
-  const itensVendaUpdated: ItensVenda = itensVendaRepository.create({
+  const itensVendaUpdated: ItensVenda = itensvendaRepository.create({
     ...itensVendaFound,
     ...payload,
   });
 
-  await itensVendaRepository.save(itensVendaUpdated);
+  await itensvendaRepository.save(itensVendaUpdated);
 
   const itensVenda = itensVendaReturnSchema.parse(itensVendaUpdated);
 
@@ -45,7 +69,7 @@ const update = async (payload: ItensVendaUpdate, id: number): Promise<ItensVenda
 };
 
 const destroy = async (itensVenda: ItensVenda): Promise<void> => {
-  await itensVendaRepository.remove(itensVenda);
+  await itensvendaRepository.remove(itensVenda);
 };
 
 export default { create, read, update, destroy, readAll };

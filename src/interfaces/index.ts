@@ -10,7 +10,7 @@ import {
 
 import {
     ItensVendaCreate, ItensVendaRead, ItensVendaUpdate,
-    ItensVendaRepo
+    ItensVendaRepo, ItensVendaReturn
 } from './itensvenda.interface';
 
 import {
@@ -28,5 +28,5 @@ export {
     FuncionarioCreate, FuncionarioRead, FuncionarioReturn, FuncionarioUpdate, FuncionarioRepo,
     ItensVendaCreate, ItensVendaRead, ItensVendaUpdate, ItensVendaRepo,
     ProdutoCreate, ProdutoRead, ProdutoUpdate, ProdutoRepo,
-    VendaCreate, VendaRead, VendaUpdate, VendaRepo, ProdutoReturn, VendaReturn
+    VendaCreate, VendaRead, VendaUpdate, VendaRepo, ProdutoReturn, VendaReturn, ItensVendaReturn
 };
