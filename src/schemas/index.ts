@@ -1,21 +1,21 @@
 import {
     clientSchema, clienteCreateSchema, clientUpdateSchema, clientReturnSchema, clientReadSchema
-} from './Client.schemas';
+} from './client.schemas';
 
 import {
     funcionarioSchema, funcionarioCreateSchema, funcionarioUpdateSchema, funcionarioReturnSchema, funcionarioReadSchema
 } from './funcionario.schemas';
 
 import {
-    itensVendaSchema, itensVendaCreateSchema, itensVendaUpdateSchema, itensVendaReadSchema
+    itensVendaSchema, itensVendaCreateSchema, itensVendaUpdateSchema, itensVendaReadSchema, itensVendaReturnSchema
 } from './itensvenda.schema';
 
 import {
-    produtoSchema, produtoCreateSchema, produtoUpdateSchema, produtoReadSchema
+    produtoSchema, produtoCreateSchema, produtoUpdateSchema, produtoReadSchema, produtoReturnSchema
 } from './produto.schemas';
 
 import {
-    vendaSchema, vendaCreateSchema, vendaUpdateSchema,  vendaReadSchema
+    vendaSchema, vendaCreateSchema, vendaUpdateSchema, vendaReadSchema, vendaReuturnSchema,vendaReturnItensSchema
 } from './venda.schemas';
 
 export {
@@ -23,5 +23,5 @@ export {
     funcionarioSchema, funcionarioCreateSchema, funcionarioUpdateSchema, funcionarioReturnSchema, funcionarioReadSchema,
     itensVendaSchema, itensVendaCreateSchema, itensVendaUpdateSchema, itensVendaReadSchema,
     produtoSchema, produtoCreateSchema, produtoUpdateSchema, produtoReadSchema,
-    vendaSchema, vendaCreateSchema, vendaUpdateSchema,  vendaReadSchema
+    vendaSchema, vendaCreateSchema, vendaUpdateSchema, vendaReadSchema, produtoReturnSchema, vendaReuturnSchema, itensVendaReturnSchema,vendaReturnItensSchema
 };
