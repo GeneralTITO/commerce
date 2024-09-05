@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import { produtoServices } from '../services'
-import { ProdutoReturn, ProdutoRead } from "../interfaces";
+import { ProdutoReturn } from "../interfaces";
 
 const create = async (req: Request, res: Response): Promise<Response> => {
     const produto: ProdutoReturn = await produtoServices.create(req.body);
