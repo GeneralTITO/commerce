@@ -15,7 +15,7 @@ const read = async (req: Request, res: Response): Promise<Response> => {
 
 const update = async (req: Request, res: Response): Promise<Response> => {
     const id: number = Number(req.params.id);
-    const venda: VendaReturn = await vendasServices.update(req.body, id);
+    const venda: VendaReturn = await vendasServices.updateClose(req.body, id);
     return res.status(200).json(venda);
 };
 

@@ -11,7 +11,7 @@ export const ItensVendaExists = async (
     const id: number = Number(req.params.id);
 
     const foundEntity: ItensVenda | null = await itensvendaRepository.findOne({
-        where: { id: id },
+        where: { id: id }, relations: ['produto']
     });
     if (!foundEntity) throw new AppError("Item da venda not found", 404);
 

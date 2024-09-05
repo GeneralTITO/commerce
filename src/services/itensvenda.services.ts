@@ -28,12 +28,15 @@ const create = async (payload: ItensVendaCreate): Promise<any> => {
     if (!vendaFound) {
         throw new AppError('Venda not found', 400);
     }
+    if (vendaFound.status == 'Concluída') {
+        throw new AppError('Essa venda já foi fechada', 500);
+    }
 
     const itensVenda = itensvendaRepository.create({
         ...payload,
         produto: produtoFound,
         venda: vendaFound,
-        precoTotal: preco   
+        precoTotal: preco
     });
 
 
@@ -49,14 +52,14 @@ const create = async (payload: ItensVendaCreate): Promise<any> => {
 
 const read = async (itensVendaId: number): Promise<ItensVendaReturn> => {
     const itensVenda = await itensvendaRepository.findOne({
-        where: { id: itensVendaId },relations:['itensvenda'],
+        where: { id: itensVendaId }, relations: ['itensvenda'],
     });
     return itensVendaReturnSchema.parse(itensVenda);
 };
 
 const readAll = async (): Promise<any> => {
     const itensVenda = await itensvendaRepository.find({
-        relations:['venda'],order: { id: "ASC" },
+        relations: ['venda'], order: { id: "ASC" },
     });
     return itensVenda;
 };
@@ -83,6 +86,17 @@ const update = async (payload: ItensVendaUpdate, id: number): Promise<ItensVenda
 };
 
 const destroy = async (itensVenda: ItensVenda): Promise<void> => {
+    
+    const produto = itensVenda.produto;
+
+    if (!produto) {
+        throw new AppError('Produto não encontrado para o item de venda', 400);
+    }
+
+    produto.quantidadeEmEstoque += itensVenda.quantidade;
+
+    await produtoRepository.save(produto);
+
     await itensvendaRepository.remove(itensVenda);
 };
 
