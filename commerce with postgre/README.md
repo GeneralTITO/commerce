@@ -2,7 +2,8 @@
 
 ## Visão Geral
 
-Esta API é projetada para gerenciar um sistema de vendas, incluindo operações para clientes, produtos, vendas e itens de venda. 
+Esta API é projetada para gerenciar um sistema de vendas, incluindo o cadastro de clientes até a finalização de uma venda, passando pela gestão de produtos e itens de venda. Sendo possivel, também, excluir vendas e itens cadastrados nessa venda, retornando os produtos ao estoque.
+
 
 ## Endpoints
 
